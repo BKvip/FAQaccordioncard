@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | FAQ Accordion Card</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+      :root {
+        font-family: "Kumbh Sans", sans-serif;
+        color: hsl(237, 12%, 33%);
+        font-weight: 400;
+        font-size: 12px;
+      }
+      .softred {
+        color: hsl(14, 88%, 65%);
+        font-weight: 700;
+      }
+      body {
+        margin: auto;
+        min-height: 100vh;
+        min-width: 375px;
+        max-width: 1440px;
+        display: grid;
+        place-content: center;
+        background: linear-gradient(
+          360deg,
+          hsl(240, 73%, 65%) 0%,
+          hsl(273, 75%, 66%) 100%
+        );  
+      }
+
+      .box-container {
+        position: relative;
+      }
+      main {
+        box-sizing:content-box;
+        overflow: hidden;
+        position: relative;
+ 
+        width: 800px; 
+        min-height: 350px;
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 2rem;
+        padding: 4rem 2rem;
+        box-shadow: 10px 10px 10px 5px hsla(238, 29%, 16%, 0.181);
+      }
+
+      header {
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .woman {
+        position: absolute;
+        left: -80px;
+        top: 70px; 
+      }
+
+      .box {
+        z-index: 1;
+        position: absolute;
+        left: -90px;
+        top: 200px; 
+      }
+      aside h1 {
+        font-weight: 700;
+        font-size: 2rem;
+      }
+      aside {
+        padding: 0 3rem;
+      }
+
+      .questions {
+        margin: 1rem 0;
+        box-sizing: border-box;
+        border-bottom: 1px solid hsl(240, 5%, 91%);
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      .lbl-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .lbl-toggle::after {
+        content: "˅"; 
+        color: hsl(14, 88%, 65%);
+        font-weight: 700;
+        display: inline-block;
+        vertical-align: middle;
+        transition: transform 0.2s ease-out;
+      }
+      .lbl-toggle:hover {
+        color: hsl(14, 88%, 65%);
+      }
+
+      .collapsible-content {
+        margin: 1rem 0;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.25s ease-in-out;
+      }
+      .toggle:checked + .lbl-toggle {
+        color: hsl(238, 29%, 16%);
+        font-weight: 700;
+      }
+       
+
+      .toggle:checked + .lbl-toggle::after {
+        transform: rotate(180deg);
+      }
+      .toggle:checked + .lbl-toggle + .collapsible-content {
+        max-height: 100vh;
+      }
+
+      .attribution {
+        position: fixed;
+        bottom: 1vh;
+        right: 0;
+        left: 0;
+        font-size: 11px;
+        text-align: center;
+        color: hsl(0, 0%, 100%);
+      }
+      .attribution a {
+        color: hsl(178, 100%, 52%);
+      }
+
+
+      @media only screen and (max-width: 800px) {
+        body {
+        padding:5rem 0rem;
+      }
+
+        main {
+         
+        box-sizing:border-box;
+        overflow:visible;
+        position: relative; 
+
+        width: 350px; 
+        
+        display: grid;
+        grid-template: 0fr 1fr  / 1fr ;
+        align-items: start; 
+        padding: 0rem 0rem; 
+        
+      }
+      .box { 
+        height: 100px; 
+        left: 30px; 
+        top:  -50px; 
+      }
+      .woman {
+        height: 180px;  
+        top: -110px; 
+        left: 50px;  
+      }
+
+      aside {
+        padding: 4rem 2rem;
+      }
+      aside h1 {
+        text-align: center;
+        font-size: 3rem;
+      }
+
+
+      }
+
+    
+    </style>
+  </head>
+  <body>
+    <div class="box-container">
+      <img src="./images/illustration-box-desktop.svg" alt="" class="box" />
+      <main>
+        <header>
+          <img
+            src="./images/illustration-woman-online-desktop.svg"
+            alt=""
+            class="woman"
+          />
+        </header>
+
+        <aside>
+          <h1>FAQ</h1>
+
+          <div class="questions">
+            <input
+              id="collapsible1"
+              class="questions-topic toggle"
+              type="checkbox"
+            />
+            <label for="collapsible1" class="lbl-toggle"
+              >How many team members can I invite?</label
+            >
+            <div class="collapsible-content">
+              You can invite up to 2 additional users on the Free plan. There is
+              no limit on team members for the Premium plan.
+            </div>
+          </div>
+
+          <div class="questions">
+            <input
+              id="collapsible2"
+              class="questions-topic toggle"
+              type="checkbox"
+            />
+            <label for="collapsible2" class="lbl-toggle"
+              >What is the maximum file upload size?</label
+            >
+            <div class="collapsible-content">
+              All files in your account must fit your allotted storage space.
+            </div>
+          </div>
+
+          <div class="questions">
+            <input
+              id="collapsible3"
+              class="questions-topic toggle"
+              type="checkbox"
+            />
+            <label for="collapsible3" class="lbl-toggle"
+              >How do I reset my password?</label
+            >
+            <div class="collapsible-content">
+              Click “Forgot password” from the login page or “Change password”
+              from your profile page. A reset link will be emailed to you.
+            </div>
+          </div>
+
+          <div class="questions">
+            <input
+              id="collapsible4"
+              class="questions-topic toggle"
+              type="checkbox"
+            />
+            <label for="collapsible4" class="lbl-toggle"
+              >Can I cancel my subscription?</label
+            >
+            <div class="collapsible-content">
+              Yes! Send us a message and we’ll process your request no questions
+              asked.
+            </div>
+          </div>
+
+          <div class="questions">
+            <input
+              id="collapsible5"
+              class="questions-topic toggle"
+              type="checkbox"
+            />
+            <label for="collapsible5" class="lbl-toggle"
+              >Do you provide additional support?</label
+            >
+            <div class="collapsible-content">
+              Chat and email support is available 24/7. Phone lines are open
+              during normal business hours.
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Supakorn Klampod</a>.
+    </footer>
+  </body>
+</html>
