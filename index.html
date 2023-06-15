@@ -37,18 +37,18 @@
           360deg,
           hsl(240, 73%, 65%) 0%,
           hsl(273, 75%, 66%) 100%
-        );  
+        );
       }
 
       .box-container {
         position: relative;
       }
       main {
-        box-sizing:content-box;
+        box-sizing: content-box;
         overflow: hidden;
         position: relative;
- 
-        width: 800px; 
+
+        width: 800px;
         min-height: 350px;
         display: grid;
         grid-template: 1fr / 1fr 1fr;
@@ -66,14 +66,14 @@
       .woman {
         position: absolute;
         left: -80px;
-        top: 70px; 
+        top: 70px;
       }
 
       .box {
         z-index: 1;
         position: absolute;
         left: -90px;
-        top: 200px; 
+        top: 200px;
       }
       aside h1 {
         font-weight: 700;
@@ -82,52 +82,44 @@
       aside {
         padding: 0 3rem;
       }
-
       .questions {
         margin: 1rem 0;
         box-sizing: border-box;
         border-bottom: 1px solid hsl(240, 5%, 91%);
       }
 
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      .lbl-toggle {
+      summary {
+        margin: 1rem 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
       }
-      .lbl-toggle::after {
-        content: "˅"; 
+      summary:hover {
+        cursor: pointer;
+        color: hsl(14, 88%, 65%);
+      }
+
+      summary::after {
+        content: "˅";
         color: hsl(14, 88%, 65%);
         font-weight: 700;
         display: inline-block;
         vertical-align: middle;
         transition: transform 0.2s ease-out;
       }
-      .lbl-toggle:hover {
-        cursor: pointer;
-        color: hsl(14, 88%, 65%);
-      }
 
-      .collapsible-content {
-        margin: 1rem 0;
-        max-height: 0px;
-        overflow: hidden;
-        transition: max-height 0.25s ease-in-out;
+      details[open]   {
+        margin-bottom: 1rem;  
+        color: hsl(240, 6%, 50%);
       }
-      .toggle:checked + .lbl-toggle {
+ 
+      details[open] summary {
         color: hsl(238, 29%, 16%);
         font-weight: 700;
       }
-       
 
-      .toggle:checked + .lbl-toggle::after {
+      details[open] summary::after {
         transform: rotate(180deg);
-      }
-      .toggle:checked + .lbl-toggle + .collapsible-content {
-        max-height: 100vh;
       }
 
       .attribution {
@@ -143,137 +135,100 @@
         color: hsl(178, 100%, 52%);
       }
 
-
       @media only screen and (max-width: 800px) {
         body {
-        padding:5rem 0rem;
-      }
+          padding: 5rem 0rem;
+        }
 
         main {
-         
-        box-sizing:border-box;
-        overflow:visible;
-        position: relative; 
+          box-sizing: border-box;
+          overflow: visible;
+          position: relative;
 
-        width: 350px; 
-        
-        display: grid;
-        grid-template: 0fr 1fr  / 1fr ;
-        align-items: start; 
-        padding: 0rem 0rem; 
-        
-      }
-      .box {  
-        height: 100px; 
-        left: 30px; 
-        top:  -50px; 
-      } 
-      .woman {
-        height: 180px;  
-        top: -110px; 
-        left: 50px;  
-      }
+          width: 350px;
 
-      aside {
-        padding: 4rem 2rem;
-      }
-      aside h1 {
-        text-align: center;
-        font-size: 3rem;
-      }
+          display: grid;
+          grid-template: 0fr 1fr / 1fr;
+          align-items: start;
+          padding: 0rem 0rem;
+        }
+        .box {
+          height: 100px;
+          left: 30px;
+          top: -50px;
+        }
+        .woman {
+          height: 180px;
+          top: -110px;
+          left: 50px;
+        }
 
-
+        aside {
+          padding: 4rem 2rem;
+        }
+        aside h1 {
+          text-align: center;
+          font-size: 3rem;
+        }
       }
-
-    
     </style>
   </head>
   <body>
     <div class="box-container">
       <div role="banner">
-        <img src="./images/illustration-box-desktop.svg" alt=""  class="box" />
+        <img src="./images/illustration-box-desktop.svg" alt="" class="box" />
       </div>
-      
+
       <main>
         <header>
-          <img  src="./images/illustration-woman-online-desktop.svg"  alt=""  class="woman" />
+          <img
+            src="./images/illustration-woman-online-desktop.svg"
+            alt=""
+            class="woman"
+          />
         </header>
 
         <aside>
           <h1>FAQ</h1>
 
           <div class="questions">
-            <input
-              id="collapsible1"
-              class="questions-topic toggle"
-              type="checkbox"
-            />
-            <label for="collapsible1" class="lbl-toggle"
-              >How many team members can I invite?</label
-            >
-            <div class="collapsible-content">
+            <details>
+              <summary>How many team members can I invite?</summary>
               You can invite up to 2 additional users on the Free plan. There is
               no limit on team members for the Premium plan.
-            </div>
+            </details>
           </div>
 
           <div class="questions">
-            <input
-              id="collapsible2"
-              class="questions-topic toggle"
-              type="checkbox"
-            />
-            <label for="collapsible2" class="lbl-toggle"
-              >What is the maximum file upload size?</label
-            >
-            <div class="collapsible-content">
-              All files in your account must fit your allotted storage space.
-            </div>
+            <details open>
+              <summary>What is the maximum file upload size?</summary>
+              No more than 2GB. All files in your account must fit your allotted
+              storage space.
+            </details>
           </div>
 
           <div class="questions">
-            <input
-              id="collapsible3"
-              class="questions-topic toggle"
-              type="checkbox"
-            />
-            <label for="collapsible3" class="lbl-toggle"
-              >How do I reset my password?</label
-            >
-            <div class="collapsible-content">
+            <details>
+              <summary>How do I reset my password?</summary>
               Click “Forgot password” from the login page or “Change password”
               from your profile page. A reset link will be emailed to you.
-            </div>
+            </details>
           </div>
 
           <div class="questions">
-            <input
-              id="collapsible4"
-              class="questions-topic toggle"
-              type="checkbox"
-            />
-            <label for="collapsible4" class="lbl-toggle"
-              >Can I cancel my subscription?</label
-            >
-            <div class="collapsible-content">
+            <details>
+              <summary>Can I cancel my subscription?</summary>
               Yes! Send us a message and we’ll process your request no questions
               asked.
-            </div>
+            </details>
           </div>
 
           <div class="questions">
-            <input
-              id="collapsible5"
-              class="questions-topic toggle"
-              type="checkbox"
-            />
-            <label for="collapsible5" class="lbl-toggle"
-              >Do you provide additional support?</label
-            >
-            <div class="collapsible-content">
+            <details>
+              <summary>Do you provide additional support?</summary>
               Chat and email support is available 24/7. Phone lines are open
               during normal business hours.
-            </div>
+            </details>
           </div>
         </aside>
       </main>
